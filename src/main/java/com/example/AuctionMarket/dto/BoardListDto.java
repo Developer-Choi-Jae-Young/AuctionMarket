@@ -1,11 +1,13 @@
 package com.example.AuctionMarket.dto;
 
 import com.example.AuctionMarket.entity.Board;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 @Builder
 @Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class BoardListDto {
     private Long id;
     private String title;

@@ -3,6 +3,7 @@ package com.example.AuctionMarket.service;
 import com.example.AuctionMarket.entity.Member;
 import com.example.AuctionMarket.entity.UserDetailsImpl;
 import com.example.AuctionMarket.repository.MemberRepository;
+import jakarta.validation.constraints.Null;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,7 +17,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        Member member = memberRepository.findByUserId(userId).orElseThrow(() -> new RuntimeException("User Not Found"));
+        Member member = memberRepository.findByUserId(userId).orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
+
         return new UserDetailsImpl(member);
     }
 }

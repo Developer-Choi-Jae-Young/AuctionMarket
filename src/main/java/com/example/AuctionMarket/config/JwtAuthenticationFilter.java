@@ -42,10 +42,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
             return authenticationManager.authenticate(authRequest);
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             e.printStackTrace();
         }
+
 
         return null;
     }
@@ -62,6 +62,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.addHeader(JwtProperties.HEADER_ACCESS_STRING, JwtProperties.TOKEN_PREFIX + access);
         response.addHeader(JwtProperties.HEADER_REFRESH_STRING, JwtProperties.TOKEN_PREFIX + refresh);
         setSuccessResponse(response, "로그인 성공");
+        log.info("성공했어");
     }
 
     @Override

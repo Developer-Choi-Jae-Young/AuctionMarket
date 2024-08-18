@@ -1,7 +1,10 @@
 package com.example.AuctionMarket.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,6 +12,9 @@ import java.util.List;
 
 @Entity
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Comment {
     @Id
     @GeneratedValue
@@ -26,6 +32,11 @@ public class Comment {
     @JoinColumn(name = "member_id")
     private  Member member;
 
+    @Builder.Default
     @OneToMany(mappedBy = "comment")
     private List<Comment> comments = new ArrayList<>();
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
 }

@@ -38,6 +38,10 @@ public class MemberService {
         memberRepository.save(memberEntity);
     }
 
+    public Member findByUserId(String userId) {
+        return memberRepository.findByUserId(userId).orElse(null);
+    }
+
     public void sendEmail(String To) {
         //이렇게 안하면 메일 전송하고 완료된 후에 넘어가는데 그게 3초정도 걸린다고함. 그래서 비동기적으로 처리
         CompletableFuture.runAsync(() -> {

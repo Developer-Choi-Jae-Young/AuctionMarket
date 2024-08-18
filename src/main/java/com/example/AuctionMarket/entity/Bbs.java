@@ -1,8 +1,7 @@
 package com.example.AuctionMarket.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,8 +11,9 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn
 @Getter
-@Setter
-public class Bbs {
+@AllArgsConstructor
+@NoArgsConstructor
+public abstract class Bbs {
     @Id
     @GeneratedValue
     private Long id;
@@ -31,4 +31,12 @@ public class Bbs {
 
     @OneToMany(mappedBy = "bbs")
     List<BbsFile> bbsFiles = new ArrayList<>();
+
+    public Bbs(Date regDate, String context, String title, int viewCount, Member member) {
+        this.regDate = regDate;
+        this.context = context;
+        this.title = title;
+        this.viewCount = viewCount;
+        this.member = member;
+    }
 }

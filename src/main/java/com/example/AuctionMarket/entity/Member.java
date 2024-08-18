@@ -15,6 +15,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Member {
     @Id
     @GeneratedValue
@@ -32,16 +33,22 @@ public class Member {
     private Grade grade;
     private Date regDate;
 
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<Favorite> favorites = new ArrayList<>();
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<Cart> carts = new ArrayList<>();
+    @Builder.Default
     @OneToMany(mappedBy = "member")
-    private List<ChattingRoom> chattingRooms = new ArrayList<>();
+    private List<ChatMember> chatMembers = new ArrayList<>();
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<Bbs> bbs = new ArrayList<>();
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<ProductOrder> productOrders = new ArrayList<>();
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<Comment> comments = new ArrayList<>();
 

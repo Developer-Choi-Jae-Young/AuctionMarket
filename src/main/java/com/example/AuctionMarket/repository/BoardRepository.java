@@ -7,7 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 @Repository
 public interface BoardRepository extends JpaRepository<Board, Long> {
     Page<Board> findAll(Pageable pageable);
+
+    Long countBy();
 }

@@ -11,13 +11,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BbsFile {
+public class ChatMember {
     @Id
     @GeneratedValue
     private Long id;
-    private String filePath;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @ManyToOne
-    @JoinColumn(name = "bbs_id")
-    private Bbs bbs;
+    @JoinColumn(name = "chatting_room_id")
+    private ChattingRoom chattingRoom;
 }
