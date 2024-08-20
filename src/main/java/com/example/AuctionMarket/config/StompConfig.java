@@ -22,7 +22,7 @@ public class StompConfig implements WebSocketMessageBrokerConfigurer {
         registry.setPathMatcher(new AntPathMatcher("."));
         registry.setApplicationDestinationPrefixes("/app")
                 .enableStompBrokerRelay("/topic")
-                .setRelayHost("localhost")
+                .setRelayHost("cjy951213.iptime.org")
                 .setVirtualHost("/")
                 .setRelayPort(61613)
                 .setClientLogin("admin")

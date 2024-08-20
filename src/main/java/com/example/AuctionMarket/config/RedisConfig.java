@@ -23,17 +23,20 @@ import java.util.stream.IntStream;
 public class RedisConfig {
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
+        /*
         LettuceClientConfiguration clientConfig = LettuceClientConfiguration.builder()
                 .readFrom(ReadFrom.REPLICA_PREFERRED)
                 .build();
 
         RedisClusterConfiguration clusterConfiguration = new RedisClusterConfiguration();
         List<RedisNode> redisNodes = IntStream.rangeClosed(7001, 7006)
-                .mapToObj(port -> new RedisNode("127.0.0.1", port))
+                .mapToObj(port -> new RedisNode("cjy951213.iptime.org", port))
                 .collect(Collectors.toList());
         clusterConfiguration.setClusterNodes(redisNodes);
 
         return new LettuceConnectionFactory(clusterConfiguration, clientConfig);
+        */
+        return new LettuceConnectionFactory("cjy951213.iptime.org", 6379);
     }
 
     @Bean
